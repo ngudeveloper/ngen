@@ -4,13 +4,15 @@ ngen
 A minimal node module for generating Angular2 component skeleton from html tags.
 
 for example, in html we have the code as below:
-```<mytag>
+```
+<mytag>
   <mytag1><div>Div Test</div></mytag1>
 </mytag>
 ```
 result:
 
-```@Component({
+```
+@Component({
   selector:'mytag1',
   template:`
       <div>Div Test</div>
