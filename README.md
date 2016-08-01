@@ -41,11 +41,19 @@ export class MytagComponent {
 
 }
 ```
+## Link
+```shell
+C:\Users\jason>cd ngen
+C:\Users\jason\ngen>npm link
+C:\Users\jason\ngen>ngen
+please input source directory that contains html files for generation.
+Example: ngen sourceDir destDir
+```
 
 ## Installation
 
 ```shell
-  npm install ngen --save
+  npm install https://github.com/jasondu168/ngen.git
 ```
 
 ## Usage
