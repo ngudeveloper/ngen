@@ -80,7 +80,7 @@ module.exports = {
 	                var getSubComponentsImport = function (childParents, subComponents) {
 	                    var component = "";
 	                    for (var j = 0; j < subComponents.length; j++) {
-	                        component += "import { " + capital(camel(subComponents[j])) + "Component } from '" + childParents[0].toLowerCase() + "/" + subComponents[j] + "';\r\n";
+	                        component += "import { " + capital(camel(subComponents[j])).replace(/\s+/g, "") + "Component } from '" + childParents[0].toLowerCase() + "/" + subComponents[j].replace(/\s+/g, "") + "';\r\n";
 	                    }
 	                    return component;
 	                }
@@ -126,7 +126,7 @@ module.exports = {
 	                        
 	                        if ("[object HTMLUnknownElement]" === getNodeType(node.childNodes[j])) {
 	                            if (subComponents.indexOf(node.childNodes[j].tagName.toLowerCase()) < 0) {
-	                                subComponents.push(node.childNodes[j].tagName.toLowerCase());
+	                                subComponents.push(node.childNodes[j].tagName.toLowerCase().replace(/\s+/g, ""));
 	                            }
 	                        }
 
@@ -150,7 +150,7 @@ module.exports = {
 	                                , subComponents.join(","));
 
 	                            var exportClass = util.format(ANGULAR_CLASS
-	                                , capital(camel(childParentNames[0])) + "Component");
+	                                , capital(camel(childParentNames[0])).replace(/\s+/g, "") + "Component");
 
 	                            componentPath = childParents[0];
 	                            var abosolutePath = path.join(destDir, componentPath);
@@ -160,7 +160,7 @@ module.exports = {
 	                            }
 	                            
 	                            fs.writeFile(path.join(destDir, componentPath,
-	                                capital(camel(childParentNames[0])) + "Component" + ".ts"), importComponents + template + exportClass, function (err) {
+	                                capital(camel(childParentNames[0])).replace(/\s+/g, "") + "Component" + ".ts"), importComponents + template + exportClass, function (err) {
 	                                    if (err) return console.log(err);
 	                                });
 
@@ -176,7 +176,7 @@ module.exports = {
 	                                , "");
 
 	                            var exportClass = util.format(ANGULAR_CLASS
-	                                , capital(camel(node.tagName)) + "Component");
+	                                , capital(camel(node.tagName)).replace(/\s+/g, "") + "Component");
 
 	                            componentPath = childParents[0];
 	                            var abosolutePath = path.join(destDir, componentPath);
@@ -186,7 +186,7 @@ module.exports = {
 	                            }
 
 	                            fs.writeFile(path.join(destDir, componentPath,
-	                                capital(camel(node.tagName)) + "Component" + ".ts"), template + exportClass, function (err) {
+	                                capital(camel(node.tagName)).replace(/\s+/g, "") + "Component" + ".ts"), template + exportClass, function (err) {
 	                                    if (err) return console.log(err);
 	                                });
                                 //no import class here
